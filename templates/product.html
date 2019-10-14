@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/product.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="{{url_for('link')}}"><img src="{{url_for('static', filename='svg/keyboard-left-arrow-button.svg')}}"></a>
+            <span>Milk</span>
+            <!-- <a href=""><img src="svg/001-placeholder.svg" alt=""></a> -->
+        </div>
+    </div>
+    <div class="prdct">
+        <img data-src="{{url_for('static',filename='assets/Full Cream Milk.png')}}">
+    </div>
+    <div class="prdctdesc">
+        <div class="txt">
+            <span id="ab">Full-Cream-Milk</span>
+            <span id="quantity">500ML</span>
+            <span id="price">34</span>
+            <span id="time">Cut-off-time 11:30 PM</span>
+            <!-- <span class="prcdtname">Rich curd</span> -->
+        </div>
+        <div class="id">
+            <form id="myform" method="POST" action="#" style="margin-top: 52px;">
+                <input type="button" value="+"   id="plus" onclick="plus()">
+                <input type="text" size="25" value="1" id="count">
+                <input type="button" value="-" id="moins" onclick="minus()">
+            </form>
+        </div>
+    </div>
+    <div class="btn">
+        <button>Get Once</button>
+        <button>Subscribe</button>
+    </div>
+    <script src="{{url_for('static', filename='Javascript/lazyload.js')}}"></script>
+</body>
+</html>

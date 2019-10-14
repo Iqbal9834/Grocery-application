@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/show.css')}}">
+</head>
+<body>
+  <section>
+    <!--for demo wrap-->
+    <h1>Show All Item</h1>
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>ItemName</th>
+            <th>Price</th>
+            <th>Catagory</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{item.prdctname}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.catagory}}</td>
+            <td>{{item.image}}</td>
+            <td>{{item.descrptn}}</td>
+            <td>{{item.quntity}}</td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</body>
+</html>

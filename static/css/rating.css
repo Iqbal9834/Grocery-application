@@ -1,0 +1,42 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+header{
+width: 418px;
+height: 40px;
+position: fixed;
+top: 0px;
+background: #f06292;
+margin-bottom: 10px;
+}
+header img{
+max-width: 15px;
+position: absolute;
+top: 14px;
+margin-left: 30px;
+}
+.txt{
+        margin: 84px 30px 19px 39px;
+        max-width: 418px;
+        max-height: 141px;
+
+}
+.txt #heading{
+font-size: 18px;
+font-weight: bold;
+font-family: 'Montserrat', sans-serif;
+margin-bottom: 9px;color: #757575;
+}
+.txt #text{
+font-size: 13px;
+font-weight: bold;
+font-family: 'Montserrat', sans-serif;
+margin-top: 0px;color: #757575;
+}
+.txt #lst{
+font-size: 11px;
+font-family: 'Montserrat', sans-serif;
+margin-bottom: 9px;
+color: #757575;
+}

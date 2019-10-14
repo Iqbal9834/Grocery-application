@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=B612&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+    <!-- Base URL -->
+    <base href="{{url_for('link')}}"">
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="header">
+                <img src="{{url_for('static', filename='assets/svg/001-facebook-placeholder-for-locate-places-on-maps.svg')}}">
+                <span>Delhi</span>
+                <!-- <img id="th" src="/assets/svg/002-musica-searcher.svg" alt=""> -->
+                <a href="{{url_for('cart')}}">
+                    <img class="ripple" src="{{url_for('static',filename='assets/svg/003-shopping-cart.svg')}}" alt="" style="margin-left: 152px;margin-right: -36px;" class="lazy" loading="lazy">
+                </a>
+            </div>
+
+        <div class="slideshow">
+            <span>Best Selling Categories</span>
+            <div class="img">
+                <div class="id">
+                    <a href="{{url_for('link')}}"> <img data-src="/static/assets/plate-cheeses.jpg"></a>
+                    <p>Curd</p>
+                </div>
+                <div class="id">
+                    <a href=""> <img data-src="/static/assets/milk-jug.jpg"> </a>
+                    <p>Milk</p>
+                </div>
+                <div class="id">
+                    <a href=""> <img data-src="/static/assets/fresh-.jpg"> </a>
+                    <p>Fruits</p>
+                </div>
+                <div class="id">
+                    <a href=""> <img data-src="/static/assets/date.jpg"> </a>
+                    <p>Date</p>
+                </div>
+                <div class="id">
+                    <a href=""> <img data-src="/static/assets/ice-cream-.jpg"> </a>
+                    <p>Ice-cream</p>
+                </div>
+                <div class="id">
+                    <a href=""> <img data-src="https://media.gettyimages.com/photos/pouring-milk-picture-id172875935?k=6&m=172875935&s=612x612&w=0&h=qKYDl_9f7ixQoK6lZkcL7TVLtgXT5-Y5mIbKU9xYJBo=" alt="" class="lazy" >  </a>
+                    <p>Milk</p>
+                </div>
+                <div class="id">
+                    <a href=""> <img data-src="https://media.gettyimages.com/photos/pouring-milk-picture-id172875935?k=6&m=172875935&s=612x612&w=0&h=qKYDl_9f7ixQoK6lZkcL7TVLtgXT5-Y5mIbKU9xYJBo=" alt="" class="lazy"> </a>
+                    <p>Milk</p>    
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+        </div>
+        <div class="product">
+            <span>Categories</span>
+            <p>Get more than just milk</p>
+            <div class="img1">
+                <div class="ig">
+                    <a href="">
+                        <img data-src="/static/assets/apple.jpg">
+                    </a>
+                    <a href="">
+                        <img data-src="/static/assets/date.jpg">
+                    </a>
+                </div>
+                <div class="ig">
+                    <a href="">
+                        <img data-src="/static/assets/ice-cream-.jpg" alt="" class="lazy">
+                    </a>
+                    <a href="">
+                        <img data-src="/static/assets/milk-jug.jpg" alt="" class="lazy" >
+                    </a>
+                </div>
+                <div class="ig">
+                    <a href="">
+                        <img data-src="/static/assets/salad.jpg" alt="" class="lazy" > 
+                    </a>
+                    <a href="">
+                        <img data-src="/static/assets/images.jpeg" alt="" class="lazy" l>
+                    </a>
+                </div>
+                <div class="ig">
+                    <a href="">
+                        <img data-src="/static/assets/images.jepg" alt="" class="lazy" >
+                        <img data-src="/static/assets/images.jepg" alt="" class="lazy" >
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="breakfirst">
+            <span>Breakfast</span>
+            <p>Your Personal breakfast Menu</p>
+            <div class="img">
+                <a href="">
+                    <img data-src="/static/assets/white.jpg" alt="" class="lazy">
+                </a>
+                <a href="">
+                    <img data-src="/static/assets/salad.jpg" alt="" class="lazy">
+                </a>
+                <a href="">
+                    <img data-src="/static/assets/hot.jpg" alt="" class="lazy">
+                </a>
+            </div>
+        </div>
+    </section>
+    <div class="footer">
+        <img src="/static/svg/008-user.svg" alt="" class="lazy" >
+        <img src="/static/svg/007-wallet.svg" alt="" class="lazy">
+        <img src="/static/svg/004-shop.svg" alt="" class="lazy" >
+        <img src="/static/svg/006-delivery-truck.svg" alt="" class="lazy" >
+        <img src="/static/svg/005-plan.svg" alt="" >
+    </div>
+</div>
+<script src="{{url_for('static', filename='Javascript/lazyload.js')}}"></script>
+</body>
+</html>

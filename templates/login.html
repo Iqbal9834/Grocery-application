@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <!-- <img src="/static/svg/back.svg" alt=""> -->
+        <span>LOGIN</span>
+    </header>
+
+    <form action="/log" method="post">
+        <span class="txt">NAME</span>
+        <input type="text" placeholder="Enter your email" name='username'>
+        <span class="txt">Password</span>
+        <input type="password"  placeholder="Create your password" name='password'>
+        <input type="submit" value="Continue" >
+    </form>
+</body>
+</html>

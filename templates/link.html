@@ -1,0 +1,47 @@
+{% extends "structure.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<body>
+        <header>
+            <ul>
+                <li>
+                    <a href="{{url_for('index')}}">
+                        <img src="/static/svg/keyboard-left-arrow-button.svg">
+                    </a>
+                </li>
+                <li>
+                    <span>Milk</span>
+                </li>
+                <li>
+                    <a href="{{url_for('cart')}}">
+                        <img id="cart" src="/static/assets/svg/003-shopping-cart.svg">
+                    </a>
+                </li>
+            </ul>
+        </header>
+    <section>
+    {% for item in items %}
+    {% set fname='assets/' + item.image %}
+    <div class="wrap">
+        <div class="item">
+            <div class="img">
+                 <a href="{{url_for('product')}}"><img data-src="{{url_for('static', filename=fname)}}"></a>
+            </div>
+            <div class="txt">
+                <span>{{item.prdctname}}</span>
+                <p id="quantity">{{item.quntity}}Ml</p>
+                <p>₹{{item.price}}</p>
+            </div>
+            <div class="btn">
+                <button class="add ripple" onclick="window.location.href='/addToCart?produtId={{item.productId}}'">Get once</button>
+            </div>
+        </div> 
+    </div>
+    </section>
+    <!-- <a href="/addToCart?produtId={{item.productId}}"></a> -->
+    {% endfor %}
+    <script src="{{url_for('static', filename='Javascript/lazyload.js')}}"></script>
+</body>
+{% endblock %}

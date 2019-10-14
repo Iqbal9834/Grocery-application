@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+</head>
+<body>
+    <main>
+        <div class="menu">
+            <div class="panel">
+                <label class="text" for="toggle">Admin Block</label>
+                <label class="icon fas fa-cog" for="toggle"></label>
+            </div>
+            <input type="checkbox" id="toggle">
+            <div class="dropdown">
+                <div class="arrow"></div>
+                <a href="{{url_for('Show_items')}}" class="row">
+                    <div class="text">show all</div>
+                    <i class="icon fas fa-user"></i>
+                </a>
+                <a href="{{url_for('add')}}" class="row">
+                    <div class="text">Add Item</div>
+                    <i class="icon far fa-chart-bar"></i>
+                </a>
+                <a href="#" class="row">
+                    <div class="text">User's</div>
+                    <i class="icon fas fa-upload"></i>
+                </a>
+                <a href="#" class="row">
+                    <div class="text">Payment</div>
+                    <i class="icon fas fa-pencil-alt"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

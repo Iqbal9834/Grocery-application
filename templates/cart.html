@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=B612&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/cart.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <nav>
+            <ul>
+                <li id="title">
+                    Cart
+                </li>
+                <li id="price">
+                    Rs{{totalprice}}
+                    <!-- <img src="{{url_for('static', filename='svg/keyboard-left-arrow-button.svg')}}"> -->
+                </li>
+                <li id="noofitem">
+                    Items({{noOfItems}})
+                </li>
+            </ul>
+        </nav>
+    </section>
+{% for itm in itms %}
+{% set fname='assets/' + itm.image %}
+    <div class="container">
+        <div class="img">
+            <a href=""><img src="{{url_for('static', filename=fname)}}"></a>
+        </div>
+        <div class="txt">
+            <span>{{itm.prdctname}}</span>
+            <strong>₹{{itm.price}}</strong>
+        </div>
+        <div class="cntr">
+            <a href="/remove?produtId={{itm.productId}}" 
+            style="color: black;font-size: 23px;font-weight: bold;margin-left: 65px;text-decoration: none;">--</a>
+            <div id="quantity">
+                    <button class="arrow ripple" onclick="window.location.href='/upClick?produtId={{itm.productId}}'">&#8249;</button>
+                    <span id="number">{{qunty[loop.index]}}</span>
+                    <button class="arrow ripple" onclick="window.location.href='/downClick?produtId={{itm.productId}}'">&#8250;</button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+    <footer>
+        <div class="btn">
+            <div class="addproduct">
+                <a href="{{url_for('link')}}"><button class="ripple">Add More</button></a>
+            </div>
+            <div class="checkout">
+                <a href="{{url_for('checkout')}}"><button class="ripple">Checkout</button></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

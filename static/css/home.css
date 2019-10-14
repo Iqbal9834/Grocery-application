@@ -1,0 +1,79 @@
+@import "https://fonts.googleapis.com/css?family=Lato:300,700";
+@import "https://use.fontawesome.com/releases/v5.7.2/css/all.css";
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #c7b7a7;
+    background-image: url("http://oi64.tinypic.com/i3zbs7.jpg");
+    margin: 0;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.menu {
+    margin: 4rem auto;
+    max-width: 300px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 5px;
+    padding-top: 107px;
+}
+
+.panel,
+.dropdown .row {
+    padding: 12px 15px;
+    background-color: #f8f8f8;
+    color: #888888;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+
+.text { font-size: 16px; }
+.icon { font-size: 20px; }
+
+.panel :hover {
+    color: #6c6c6c;
+    cursor: pointer;
+}
+
+input#toggle { display: none; }
+input#toggle  .dropdown { display: block; }
+input#toggle:checked  .dropdown { display: none; }
+
+.dropdown { margin-top: 7px; }
+
+.dropdown .arrow {
+width: 0;
+height: 0;
+border-left: 7px solid transparent;
+border-right: 7px solid transparent;
+border-bottom: 9px solid #f8f8f8;
+margin-left: 20px;
+}
+
+.dropdown .row {
+    border-radius: 0;
+    box-shadow: none;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.dropdown .row:nth-child(2) { border-radius: 3px 3px 0 0; }
+.dropdown .row:last-child { border-radius: 0 0 3px 3px; }
+
+.dropdown:hover > .row { color: #bebebe; }
+
+.dropdown .row:hover {
+    background-color: #ebebeb;
+    color: #6c6c6c;
+}

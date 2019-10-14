@@ -1,0 +1,181 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    background: #e0e0e0
+}
+section{
+    margin: 0%;
+    padding: 0%;
+    height: 51px;
+    width: 418px;
+    background:#ff69b4;
+}
+section nav{
+    height: inherit;
+}
+section nav ul{
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+    height: inherit;
+    justify-content: space-around;
+}
+ul>#title{
+    width: 40px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+ul>#price{
+    position: relative;
+    left: 135px;
+    font-size: 13px;
+    width: 0px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+ul>#noofitem{
+    position: relative;
+    right: 61px;
+    font-size: 13px;
+    width: 0px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+.container{
+    margin-top: 0.3%;
+    height: 103px;
+    max-width: 418px;
+    display: flex;
+    flex-wrap: wrap;
+    background: #ffff;
+}
+.container .img{
+    height: inherit;
+     margin-top: 6px;
+    }
+.img img{
+    height: 91px;
+    margin-top: 5px;
+}
+.container .txt{
+    margin-left: 8px;
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    width: 219px;
+    max-height: inherit;
+}
+.container .txt span{
+    font-size: 13px;
+    font-style: normal;
+    color: #424242;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 13px;
+    letter-spacing: 0.1px;
+}
+.container .txt strong{
+    color: #f06292;
+    margin-top: 5px;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+footer{
+    margin-top: 65px;
+}
+footer .btn{
+    display: flex;
+    position: fixed;
+    height: 51px;
+    width: 418px;
+    bottom: 0px;
+    box-shadow: 0px 0px 7px 6px white;
+}
+footer .btn .addproduct{
+    width: 209px;
+    height: 51px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    border-bottom: 1px solid white;
+}
+footer .btn .checkout{
+    height: 51px;
+    width: 209px;
+    background: #ff69b4;
+    border: none;
+    color:inherit;
+    font-size: 19px;
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 2px solid white;
+}
+footer .btn .addproduct button,a{
+    height: inherit;
+    width: inherit;
+    color: inherit;
+    font-family: inherit;
+    border: none;
+    letter-spacing: 1px;
+    outline: none;
+}
+footer .btn .checkout button{
+    height: inherit;
+    width: inherit;
+    background-color: inherit;
+    color: white;
+    border: none;
+    font-family: inherit;
+    letter-spacing: 1px;
+    outline: none;
+}
+.ripple{
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+  .ripple::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
+  .ripple:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+  }
+  .cntr{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+#quantity .arrow{
+    background: white;
+    padding: 2px 9px;
+    font-size: 14px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #ff69b4;
+    color: #ff69b4;
+  }
+  #quantity #number{
+    font-size: 17px;
+    color: #ff69b4;
+  }

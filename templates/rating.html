@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/rating.css')}}">
+</head>
+<body>
+    <header>
+        <img src="/static/svg/back.svg" alt="">
+        <!-- <span>PROFILE</span> -->
+        <!-- <span style=" right: 12px;">Logout</span> -->
+    </header>
+    <div class="txt">
+        <p id="heading">Rate your experince.</p>
+        <p id="text">Hey iqbal Please rate your doosrstep delivery experience by Doodhwala</p>
+        <p id="lst">We will use your feedback to improve your delivery and product experience</p>
+    </div>
+    <div class="star">
+        <div class="star" style="margin: 31px 30px 19px 39px;">
+            <img src="/static/assets/svg/favorite.svg" alt="" style="max-height: 30px;max-width: 30px;margin-right: 15px;">
+            <img src="/static/assets/svg/favorite.svg" alt="" style="max-height: 30px;max-width: 30px;margin-right: 15px;">
+            <img src="/static/assets/svg/favorite.svg" alt="" style="max-height: 30px;max-width: 30px;margin-right: 15px;">
+            <img src="/static/assets/svg/favorite.svg" alt="" style="max-height: 30px;max-width: 30px;margin-right: 15px;">
+            <img src="/static/assets/svg/favorite.svg" alt="" style="max-height: 30px;max-width: 30px;">
+            <textarea rows="5" cols="45" name="comment" form="usrform" style="margin-top: 33px;"></textarea>
+            <input type="button" value="Continue" style="margin: 10px 0px 4px 45px;width: 288px;border: none;height: 50px;border-radius: 7px;font-size: 22px;color: white;background: #f06292;font-family: 'Montserrat', sans-serif;box-shadow: 1px 1px 0px 0px #75757547;"> 
+        </div>
+    </div>
+</body>
+</html>

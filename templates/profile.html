@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/profile.css')}}">
+</head>
+<body>
+        <header>
+                <img src="{{url_for('static', filename='svg/back.svg')}}">
+                <span>PROFILE</span>
+                <!-- <span style=" right: 12px;">Logout</span> -->
+                <a href="{{'logout'}}" id='logout'>Logout</a>
+        </header>
+            <section>
+                <a href="#" id='logout'>Edit</a>
+                <div class="container">
+                    <div class="img">
+                        <a href="#"><img id="img" src="{{url_for('static', filename='assets/')}}"></a>
+                    </div>
+                <div class="txt">
+                     <p>{{usrname}}</p>
+                     <p>{{usremail}}</p>
+                     <p>{{usrphno}}</p>
+                </div>
+                 <div class="address">
+                        <div class="temp">
+                           <span>Manage adresss</span>
+                           <p style="margin-top: 28px;">{{address}}</p>
+                        </div>
+                 </div>
+                 <div class="add">
+                        <a href="#">Add address</a>
+                 </div>
+                </div>
+            </section>
+</body>

@@ -1,0 +1,119 @@
+*{
+   margin: 0px;
+}
+.container .header{
+   width: 425px;
+   height: 40px;
+   background: #f06292;
+   position: fixed;
+   top: 0px;
+}
+.container .header img{
+   max-width: 15px;
+   position: absolute;
+   top: 12px;
+   margin-left: 30px;
+}
+.container .header span{
+   font-family: 'Montserrat', sans-serif;
+   margin-left: 65px;
+   color: white;
+   position: absolute;
+   top: 10px;
+}
+.prdct{
+   margin-top: 46px;
+   max-width: 418px;
+   height: 210px;
+   box-shadow: 0px 2px 1px 0px #f5f5f5;
+ }
+ .prdct img{
+   height: 125px;
+   width: inherit;
+   margin-top: 42px;
+   margin-left: 146px;
+}
+.prdctdesc{
+   max-width: 418px;
+   height: 227px;
+   display: flex;
+}
+.txt{
+   display: flex;
+   flex-direction: column;
+   margin-left: 20px;
+   margin-right: 166px;
+}
+.prdctdesc .txt  #ab{
+   color: #757575;
+   margin-top: 20px;
+   margin-bottom: 15px;
+   font-size: 13px;
+   font-weight: bold;
+   font-family: 'Poppins', sans-serif;
+}
+.prdctdesc .txt  #quantity{
+   margin-bottom: 9px;
+   box-shadow: 1px 1px 7px 0px #efebe9;
+   width: 39px;
+   height: 16px;
+   border: none;
+   font-size: 10px;
+   border-radius: 3px;
+   text-align: center;
+   font-family: 'Poppins', sans-serif;
+   padding-top: 3px;
+   color: #757575;
+}
+.prdctdesc .txt #price{
+   font-size: 11px;
+   color: #f06292;
+   margin-bottom: 10px;
+   font-family: 'Poppins', sans-serif;
+}
+.prdctdesc .txt #time{
+   font-size: 12px;
+   margin-bottom: 10px;
+   font-family: 'Poppins', sans-serif;
+   color: #757575;
+}
+.prdctdesc .id span{
+   position: absolute;
+   top: 302px;
+}
+.btn{
+   max-width: 418px;
+   height: 56px;
+   display: flex;
+   position: relative;
+   top: 31px;
+}
+.btn button{
+   border: none;
+   height: inherit;
+   width: 50%;
+   font-size: 18px;
+   box-shadow: 0px -1px 0px 0px #e0e0e0;
+   background: white;
+   color: #757575;
+}
+input[type='button']{
+   color: white;
+   font-size: 15px;
+   background: #90a4ae;
+   border: none;
+   border-radius: 5px;
+   text-align: center;
+}
+input[type='text']{
+   width: 20px;
+   border: none;
+   text-align: center;
+   color: black;
+   height: 15px;
+   border-radius: 5px;
+   font-size: 10px;
+   padding: 4px 0px 3px 0px;
+   align-items: center;
+   box-shadow: 0px 0px 3px 0px #e0e0e0;
+}

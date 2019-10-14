@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/Signin.css')}}">
+    <title>Document</title>
+<body>
+    <header>
+        <img src="/static/svg/back.svg" alt="">
+        <span>CREATE ACCOUNT</span>
+    </header>
+    <form action="/Signin" method="post">
+        <!-- <div id="center">Enter the spot</div> -->
+        <span class="txt">Enter your name</span>
+        <input type="text" placeholder="Enter your name"  name="name" required/>
+        <span class="txt">Enter your email</span>
+        <input type="text" placeholder="Enter your email" name="email" required/>
+        <span class="txt" >Enter your ph.no.</span>
+        <input type="number" placeholder="Enter your ph.No." name="number" required/>
+        <span class="txt">Enter your address</span>
+        <input type="text" placeholder="Enter your address" name="adress" required/>
+        <span class="txt">Create Your password</span>
+        <input type="password" placeholder="Enter your passowrd" name="paswrd" required/>
+        <input type="submit" value="Continue">
+        <p>Already have an account&gt;
+            <a href="{{url_for('usrlog')}}">Login</a>
+        </p>
+    </form>
+</body>
+</html>
