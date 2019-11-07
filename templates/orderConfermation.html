@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        header{
+            height: 50px;
+            box-shadow: 0px 0px 4px 1px #c9c9c9;
+            width: 418px;
+            padding: 0px;
+            margin: 0px;
+        }
+        ul{
+            list-style-type: none;
+            margin: 0px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: inherit;
+            width: inherit;
+            padding: 0px;
+        }
+        ul li span{
+            color: #616161;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+            margin-left: 23px;
+        }
+        .container{
+            width: 418px;
+            display: flex;
+            margin-top: 24px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .txt{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 335px;
+            margin-top: 43px;
+            box-shadow: 0px 1px 0px 0px #9e9e9e;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .txt #greeting{
+            color: red;
+            font-size: 13px;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 3px;
+            line-height: 31px;
+        }
+        .txt span{
+            color: #424242;
+            font-size: 10px;
+            letter-spacing: 1px;
+            line-height: 16px;
+        }
+        .btn{
+            margin-top: 44px;
+        }
+        .btn #cancel{
+            letter-spacing: 1px;
+            height: 45px;
+            width: 184px;
+            background: white;
+            border: 1px solid red;
+            color: red;
+            outline: none;
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn #continue{
+            letter-spacing: 1px;
+            height: 45px;
+            width: 183px;
+            background: red;
+            border: 1px solid red;
+            color: white;
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+        }
+        .btn button a{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <ul>
+                <li>
+                    <span>Order Confermation</span>
+                </li>
+            </ul>
+        </header>
+        <div class="container">
+            <div class="img">
+            <img src="{{url_for('static',filename='assets/iqbal.jpg')}}">
+            </div>
+            <div class="txt">
+                <span id="greeting">THANK YOU!</span>
+                <span>your order has been successfully placed.You</span>
+                <span>will receive a confirmation via email/SMS shortly</span>
+            </div>
+            <div class="btn">
+                <button id="cancel">
+                    <a href="{{'Cancel'}}" style="color: black;">Cancel</a>
+                </button>
+                <button id="continue">
+                   <a href="{{'cart'}}">Continue Shopping</a>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

@@ -3,15 +3,26 @@ import os
 from werkzeug.utils import secure_filename
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail
+from flask_mail import Message
+import nexmo
 
 UPLOAD_FOLDER = 'static/uploads'
 app = Flask(__name__)
+app.config.update(
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT='465',
+    MAIL_USE_SSL=True,
+    MAIL_USERNAME='iqbalali9554@gmail.com',
+    MAIL_PASSWORD='ritu34@mojo'
+)
+client=nexmo.Client(key='47ee9d6f', secret='4KrBygGNe1RYnDMm')
+mail=Mail(app)
 bcrypt=Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///User.db'
 app.secret_key = 'random string'
 app.config['UPLOAD_FOLDER']=UPLOAD_FOLDER
 db = SQLAlchemy(app)
-
 class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), nullable=False)
@@ -45,13 +56,21 @@ class Cart(db.Model):
 
 class Adress(db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    productid=db.Column(db.Integer, nullable=False,unique=True)
+    # productid=db.Column(db.Integer, nullable=False,unique=True)
     StreetName=db.Column(db.String(100), nullable=False)
     City=db.Column(db.String(10),nullable=False)
     State=db.Column(db.String(10), nullable=False)
     Pincode=db.Column(db.Integer,nullable=False)
     LandMark=db.Column(db.String, nullable=True)
     Email=db.Column(db.String, nullable=False)
+
+class Order(db.Model):
+    orderid=db.Column(db.Integer,primary_key=True, nullable=False)
+    productid=db.Column(db.Integer, nullable=False)
+    address=db.Column(db.String, nullable=False)
+    number=db.Column(db.Integer, nullable=False)
+    price=db.Column(db.Integer, nullable=False)
+    qty=db.Column(db.Integer, nullable=False)
 
 def getUserInformation():
         if 'email' not in session:
@@ -63,7 +82,15 @@ def getUserInformation():
             user=Login.query.filter_by(Email=session['email']).first()
             userId=user.userid
             noOfItems=Cart.query.filter_by(userid=userId).count()
-        return (loggedIn, noOfItems, userId)
+            prducts=Cart.query.filter_by(userid=userId).all()
+            totalprice=0
+            for prduct in prducts:
+                abc=prduct.productId
+                quntity=Cart.query.filter_by(productId=abc).first()
+                prc=quntity.quantity
+                itm=Items.query.filter_by(productId=abc).first()
+                totalprice+=itm.price*prc
+        return (loggedIn, noOfItems, userId,totalprice)
 
 # @app.route('/')
 # def login():
@@ -202,7 +229,6 @@ def remove():
         print(produtId)
         loggedIn, noOfItems, usrid= getUserInformation()
         remove=Cart.query.filter_by(productId=produtId,userid=usrid).first()
-        print(remove)
         db.session.delete(remove)
         db.session.commit()
         return redirect(url_for('cart'))
@@ -211,7 +237,7 @@ def remove():
 def cart():
     if 'email' not in session:
         return redirect(url_for('usrlog'))
-    loggedIn, noOfItems, usrid= getUserInformation()
+    loggedIn, noOfItems, usrid, totalprice= getUserInformation()
     if noOfItems==0:
         return redirect(url_for('link'))
     else:
@@ -219,7 +245,6 @@ def cart():
         itms=[]
         qun=[]
         qun.append(0)
-        totalprice=0
         for prduct in prducts:
             abc=prduct.productId
             quntity=Cart.query.filter_by(productId=abc).first()
@@ -228,23 +253,14 @@ def cart():
             print(prc)
             itm=Items.query.filter_by(productId=abc).first()
             itms.append(itm)
-            print(itm)
-            totalprice+=itm.price*prc
-            print(totalprice)
-             # print(itms)
-             # print(quntity)
-    # print(totalprice)
-    # print(quntity)
-    # quntity=len(qun)
-    # a=quntity.str()
     print(itms)
     print(qun)
     return render_template("cart.html", itms = itms, noOfItems=noOfItems, totalprice=totalprice,qunty=qun)
 
-@app.route('/upClick')
-def upClick():
+@app.route('/downClick')
+def downClick():
    produtId=request.args.get('produtId')
-   loggedIn, noOfItems, usrid= getUserInformation()
+   loggedIn, noOfItems, usrid, totalprice= getUserInformation()
    query=Cart.query.filter_by(userid=usrid,productId=produtId).first()
    qun=query.quantity
    qun+=1
@@ -253,10 +269,10 @@ def upClick():
    db.session.commit()
    return redirect(url_for('cart'))
 
-@app.route('/downClick')
-def downClick():
+@app.route('/upClick')
+def upClick():
    produtId=request.args.get('produtId')
-   loggedIn, noOfItems, usrid= getUserInformation()
+   loggedIn, noOfItems, usrid, totalprice= getUserInformation()
    query=Cart.query.filter_by(userid=usrid,productId=produtId).first()
    qun=query.quantity
    if(qun<=0):
@@ -274,9 +290,13 @@ def checkout():
     if 'email' not in session:
         return redirect(url_for('usrlog'))
     else:
+        loggedIn, noOfItems, usrid, totalprice=getUserInformation()
         email=session['email']
-        user=Login.query.filter_by(Email=email).first()   
-    return render_template('Personal.html',user=user)
+        if(Adress.query.filter_by(Email=email)):
+            return redirect(url_for('check'))
+        else:
+            user=Login.query.filter_by(Email=email).first() 
+            return render_template('Personal.html',user=user,totalprice=totalprice)
 
 @app.route('/gofurther', methods=['GET','POST'])
 def gofurther():
@@ -293,6 +313,58 @@ def gofurther():
         return redirect(url_for('cart'))
     else:
         return redirect(url_for('checkout'))
+@app.route('/check')
+def check():
+    if 'email' not in session:
+        return redirect(url_for('usrlog'))
+    else:
+        email=session['email']
+        loggedIn, noOfItems, usrid, totalprice= getUserInformation()
+        adress=Adress.query.filter_by(Email=email).first()
+        contact=Login.query.filter_by(Email=email).first()
+        return render_template('checkout.html',adress=adress,contact=contact, noOfItems=noOfItems, totalprice=totalprice)
+    return render_template('profile.html')
+
+@app.route('/order')
+def order():
+    loggedIn, noOfItems, usrid, totalprice= getUserInformation()
+    remove=Cart.query.filter_by(userid=usrid).all()
+    for rm in remove:
+        db.session.delete(rm)
+    db.session.commit()
+    # email=session['email']
+    # mail.send_message('New message from'+'FreshOway',
+    # sender='iqbalali9554@gmail.com',
+    # recipients=['iqbalali9554@gmail.com'],
+    # body='Your order has been successfully placed. Look outside because we deliver within a minute Lol!'
+    #  )
+    client.send_message({
+    'from': 'FreshOway',
+    'to': '919870340879',
+    'text': 'Your order has been placed ',
+    }) 
+    return render_template('orderConfermation.html')
+
+@app.route('/Cancel')
+def Cancel():
+    client.send_message({
+        'from': 'FreshOway',
+        'to': '919870340879',
+        'text': 'Your order has been canceled',
+        })
+    return redirect(url_for('index'))
+
+@app.route('/account')
+def account():
+    return render_template('account.html')
+
+@app.route('/change')
+def change():
+    loggedIn, noOfItems, usrid, totalprice=getUserInformation()
+    email=session['email']
+    user=Login.query.filter_by(Email=email).first() 
+    return render_template('Personal.html',user=user,totalprice=totalprice)
+
 
 if __name__ == '__main__':
     app.run(debug=True)   

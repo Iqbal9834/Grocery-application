@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap" rel="stylesheet">
+    <title>Order Review</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+      .container{
+        margin-top: 14px;
+        width: 418px;
+      }
+      header{
+        height: 50px;
+        box-shadow: 0px 0px 4px 1px #c9c9c9;
+        width: 418px;
+      }
+      /* header img{
+        position: absolute;
+        height: 23px;
+        top: 13px;
+        left: 14px;
+      } */
+      .main{
+        width: 418px;
+        flex-direction: column;
+        display: flex;
+        margin-top: 13px;
+        padding-bottom: 13px;
+        box-shadow: 0px 1px 0px 1px #eeeeee;
+    }
+        .main span{
+            margin-bottom: 4px;
+            margin-left: 20px;
+            padding-bottom: 6px;
+        }
+        .deliveryadress span{
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+        .deliveryadress #change{
+            float: right;
+            line-height: 17px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: #ff69b4;
+        }
+        .deliveryadress{
+            margin-left: 20px;
+            margin-right: 13px;
+        }
+        /* .deliveryadress #edit{
+            float: right;
+            font-size: 13px;
+            font-style: normal;
+            color: #424242;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.1px;
+        } */
+        .main span{
+            float: right;
+            font-size: 13px;
+            font-style: normal;
+            color: #424242;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.1px;
+        }
+        .main #addrs{
+            float: right;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.1px;
+            font-size: 11px;
+            color: #5e5e5e;
+        }
+        .shipping{
+            padding-top: 12px;
+            height: 52px;
+            width: 418px;
+            box-shadow: 0px 1px 0px #eeee;
+        }
+        .shipping span{
+            font-size: 10px;
+            font-style: normal;
+            color: #424242;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1.1px;
+            line-height: 23px;
+        }
+        .shipping img{
+            height: 24px;
+            margin-left: 14px;
+            width: 35px;
+        }
+        .shipping p{
+            font-size: 13px;
+            margin-left: 20px;
+            font-style: normal;
+            color: #424242;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.1px;
+        }
+        .shipping .del{
+            display: flex;
+        }
+        .shipping .paymentmethod{
+            display: flex;
+        }
+        .price{
+            width: 418px;
+            height: 150px;
+            background: #fafafa;
+            box-shadow: 0px 2px 0px 0px #eeeeee;
+        }
+        .price .txt{
+            width: 50%;
+            float: left;
+            padding-top: 16px;
+        }
+        .price .txt p{
+            margin-left: 15px;
+            margin-bottom: 3px;
+            margin-top: 4px;
+            font-size: 10px;
+            line-height: 17px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .price .query{
+            width: 50%;
+            float: left;
+            text-align: right;
+            padding-top: 16px;
+        }
+        .price .query p{
+            letter-spacing: 1px;
+            margin-right: 15px;
+            margin-bottom: 3px;
+            margin-top: 4px;
+            font-size: 10px;
+            line-height: 17px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        ul{
+            margin: 0px;
+            padding: 0px;
+            height: inherit;
+            width: inherit;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            list-style-type: none;
+        }
+        ul #img{
+            width: 15px;
+            height: 15px;
+            margin-left: 20px;
+        }
+        ul #txt{
+            margin-left: 113px;
+            color: #616161;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .itemsprice{
+            height: 36px;
+            width: 418px;
+            margin-top: 5px;
+            background: #fafafa;
+            text-align: center;
+        }
+        .itemsprice span{
+            color: #212121;
+            font-size: 10px;
+            line-height: 3;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+        }
+        .btn{
+            margin-top: 49px;
+        }
+        .btn button{
+            height: 56px;
+            width: 418px;
+            background: #ff69b4;
+            border: none;
+            font-size: 17px;
+            font-family: 'Montserrat', sans-serif;
+            outline:none;
+        }
+        .btn button a{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <ul>
+                <li id="img">
+                    <a href="{{url_for('cart')}}">
+                        <img src="{{url_for('static', filename='svg/back.svg')}}">
+                    </a>
+                </li>
+                <li>
+                    <span id="txt">Order Review</span>
+                </li>
+            </ul>
+        </header>
+        <div class="itemsprice">
+            <span>{{noOfItems}} Items(No Shipping Charges apply) Rs {{totalprice}}</span>
+        </div>
+        <div class="container">
+            <div class="deliveryadress">
+                <span>Delivery Address</span>
+                <span id="change">
+                    <a href="{{url_for('change')}}">Change</a>
+                </span>
+            </div>
+            <div class="main">
+                <span>{{contact.Name}}</span>
+                <span id="addrs">{{adress.StreetName}} {{adress.City}}</span>
+                <span id="addrs">{{adress.State}}, {{adress.LandMark}}</span>
+                <span id="addrs">{{adress.Pincode}}</span>
+                <span>+91{{contact.PhoneNumber}}</span>
+            </div>
+            <div class="shipping">
+                <div class="del">
+                <img src="{{url_for('static', filename='svg/svg/shipped.svg')}}">
+                <span>Estimated Delivery Time :  </span>
+                <span style="font-weight: bold;">   Within the 40 minutes</span>  
+            </div>
+            <!-- <div class="paymentmethod">
+                <img src="{{url_for('static', filename='svg/investment.svg')}}" alt="">
+                <span>Cash on Delivery Available</span>
+            </div> -->
+            </div>
+            <div class="price">
+                <div class="txt">
+                    <p>Cart Total</p>
+                    <p>Discount</p>
+                    <p>Tax</p>
+                    <p>Shipping and Handling Charges</p>
+                    <p style="font-weight: bold;margin-top:10px;">TOTAL PAYABLE</p>
+                </div>
+                <div class="query">
+                    <p>₹{{totalprice}}</p>
+                    <p style="color: #ff69b4;">₹0 </p>
+                    <p>₹0</p>
+                    <p style="color: #ff69b4;">Free</p>
+                    <p style="font-weight: bold;margin-top:10px;">{{totalprice}}</p>
+                </div>
+            </div>
+            <div class="btn">
+                <button onclick="window.location.href">
+                    <a href="{{url_for('order')}}">Place Order</a>
+                </button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+<!-- https:/api.whatsapp.com/send?phone=+919971848675&text=hi -->
