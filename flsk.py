@@ -6,7 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_mail import Message
 import nexmo
-
 UPLOAD_FOLDER = 'static/uploads'
 app = Flask(__name__)
 app.config.update(
@@ -20,7 +19,7 @@ client=nexmo.Client(key='47ee9d6f', secret='4KrBygGNe1RYnDMm')
 mail=Mail(app)
 bcrypt=Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///User.db'
-app.secret_key = 'random string'
+app.config['SECRET_KEY'] = 'random string'    
 app.config['UPLOAD_FOLDER']=UPLOAD_FOLDER
 db = SQLAlchemy(app)
 class Admin(db.Model):
@@ -96,10 +95,13 @@ def getUserInformation():
 # def login():
 #     return render_template('login.html')
 
-@app.route('/index/link')
+@app.route('/link')
 def link():
-    items=Items.query.all()
-    print(items)
+    division =(request.args.get('catagory'))
+    if(division):
+        items=Items.query.filter_by(catagory=division).all()
+    else:
+        items=Items.query.all()
     return render_template('link.html', items=items)
 
 @app.route('/log', methods=['GET','POST'])
@@ -108,7 +110,7 @@ def log():
         nm=request.form.get('username')
         ps=request.form.get('password')
         admin=Admin.query.filter_by(username=nm).first()
-        result=bcrypt.check_password_hash(ps,admin.password)
+        result=bcrypt.check_password_hash(admin.password,ps)
         if(result):
              return render_template('home.html')
     else:
@@ -128,14 +130,12 @@ def add():
         quanity=request.form.get('qnty')
 
         image = request.files['img']
-        if image and allowed_file(image.filename):
-            name=image.filename
-            image.save(secure_filename(image.filename))
-            image.save(os.path.join(app.config['UPLOAD_FOLDER'],name))
+        name=secure_filename(image.filename)
+        image.save(os.path.join(UPLOAD_FOLDER,name))
         item=Items(prdctname=prdctn, price=pric, catagory=catgry,image=name,descrptn=descrpton,quntity=quanity)
         db.session.add(item)
         db.session.commit()
-        return(prdctn)
+        return render_template('Add_Item.html')
     else:
         return render_template('Add_Item.html')
 
@@ -154,29 +154,31 @@ def signin():
         user_name=request.form.get('name')
         user_email=request.form.get('email')
         user_number=request.form.get('number')
-        user_adress=request.form.get('adress')
         user_paswrd=request.form.get('paswrd')
         hashed=bcrypt.generate_password_hash(user_paswrd).decode('utf8')
-        users=Login(Name=user_name, Email=user_email, PhoneNumber=user_number,Adress=user_adress,Password=hashed)
+        users=Login(Name=user_name, Email=user_email, PhoneNumber=user_number,Password=hashed)
         db.session.add(users)
         db.session.commit()
-        return(user_adress)
+        return redirect(url_for('index'))
     else:
         return render_template('Signin.html')
 
 @app.route('/usrlog', methods=['GET','POST'])
 def usrlog():
-    if(request.method=='POST'):
-        nm=request.form.get('nme')
-        ps=request.form.get('psrd')
-        users=Login.query.filter_by(Name=nm).first()
-        session['email'] = users.Email
-        if bcrypt.check_password_hash(users.Password, ps):
-            return redirect(url_for("index"))
-        else:
-            print('Your are decrypting messege with illegal option')    
-    else:
-        return render_template('userlogin.html')
+   if 'email' not in session:
+       if(request.method=='POST'):
+           nm=request.form.get('nme')
+           ps=request.form.get('psrd')
+           users=Login.query.filter_by(Name=nm).first()
+           session['email'] = users.Email
+           if bcrypt.check_password_hash(users.Password, ps):
+               return redirect(url_for("index"))
+           else:
+               render_template('login.html')
+       else:
+           return render_template('userlogin.html')
+   else:
+       return redirect(url_for('index'))
 
 @app.route('/profile')
 def profile():
@@ -194,6 +196,8 @@ def profile():
 def logout():
     if 'email' in session:
         session.pop('email',None)
+        return render_template('doodwala.html')
+    else:
         return render_template('doodwala.html')
 
 @app.route("/addToCart")
@@ -239,7 +243,7 @@ def cart():
         return redirect(url_for('usrlog'))
     loggedIn, noOfItems, usrid, totalprice= getUserInformation()
     if noOfItems==0:
-        return redirect(url_for('link'))
+        return redirect(url_for('index'))
     else:
         prducts=Cart.query.filter_by(userid=usrid).all()
         itms=[]
@@ -260,6 +264,7 @@ def cart():
 @app.route('/downClick')
 def downClick():
    produtId=request.args.get('produtId')
+   print(produtId)
    loggedIn, noOfItems, usrid, totalprice= getUserInformation()
    query=Cart.query.filter_by(userid=usrid,productId=produtId).first()
    qun=query.quantity

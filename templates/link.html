@@ -8,7 +8,7 @@
             <ul>
                 <li>
                     <a href="{{url_for('index')}}">
-                        <img src="/static/svg/back.svg">
+                        <img src="{{url_for('static', filename='/svg/svg/004arrow-back-button.svg')}}">
                     </a>
                 </li>
                 <li>
@@ -16,14 +16,14 @@
                 </li>
                 <li>
                     <a href="{{url_for('cart')}}">
-                        <img id="cart" src="/static/assets/svg/003-shopping-cart.svg">
+                        <img id="cart" src="{{url_for('static',filename='assets/svg/003-shopping-cart.svg')}}">
                     </a>
                 </li>
             </ul>
         </header>
     <section>
     {% for item in items %}
-    {% set fname='assets/' + item.image %}
+    {% set fname='uploads/' + item.image %}
     <div class="wrap">
         <div class="item">
             <div class="img">
@@ -35,7 +35,7 @@
                 <p>₹{{item.price}}</p>
             </div>
             <div class="btn">
-                <button class="add ripple" onclick="window.location.href='/addToCart?produtId={{item.productId}}'">Get once</button>
+                <button class="add" onclick="window.location.href='/addToCart?produtId={{item.productId}}'">Get once</button>
             </div>
         </div> 
     </div>

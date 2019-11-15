@@ -9,7 +9,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
     <!-- Base URL -->
-    <base href="{{url_for('link')}}"">
+    <!-- <base href="{{url_for('link')}}""> -->
 </head>
 <body>
     <section>
@@ -27,23 +27,23 @@
             <span>Best Selling Categories</span>
             <div class="img">
                 <div class="id">
-                    <a href="{{url_for('link')}}"> <img data-src="/static/assets/plate-cheeses.jpg"></a>
+                    <a href="/link?catagory={{'curd'}}"> <img data-src="/static/assets/plate-cheeses.jpg"></a>
                     <p>Curd</p>
                 </div>
                 <div class="id">
-                    <a href=""> <img data-src="/static/assets/milk-jug.jpg"> </a>
+                    <a href="/link?catagory={{'Milk'}}"> <img data-src="/static/assets/milk-jug.jpg"> </a>
                     <p>Milk</p>
                 </div>
                 <div class="id">
-                    <a href=""> <img data-src="/static/assets/fresh-.jpg"> </a>
+                    <a href="/link?catagory={{'fruit'}}"> <img data-src="/static/assets/fresh-.jpg"> </a>
                     <p>Fruits</p>
                 </div>
                 <div class="id">
-                    <a href=""> <img data-src="/static/assets/date.jpg"> </a>
+                    <a href="/link?catagory={{'desert'}}"> <img data-src="/static/assets/date.jpg"> </a>
                     <p>Date</p>
                 </div>
                 <div class="id">
-                    <a href=""> <img data-src="/static/assets/ice-cream-.jpg"> </a>
+                    <a href="/link?catagory={{'ice cream'}}"> <img data-src="/static/assets/ice-cream-.jpg"> </a>
                     <p>Ice-cream</p>
                 </div>
                 <div class="id">
@@ -66,18 +66,18 @@
             <p>Get more than just milk</p>
             <div class="img1">
                 <div class="ig">
-                    <a href="">
+                    <a href="/link?catagory={{'fruit'}}">
                         <img data-src="/static/assets/apple.jpg">
                     </a>
-                    <a href="">
+                    <a href="/link?catagory={{'desert'}}">
                         <img data-src="/static/assets/date.jpg">
                     </a>
                 </div>
                 <div class="ig">
-                    <a href="">
+                    <a href="/link?catagory={{'ice cream'}}">
                         <img data-src="/static/assets/ice-cream-.jpg" alt="" class="lazy">
                     </a>
-                    <a href="">
+                    <a href="/link?catagory={{'Milk'}}">
                         <img data-src="/static/assets/milk-jug.jpg" alt="" class="lazy" >
                     </a>
                 </div>
